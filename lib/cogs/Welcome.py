@@ -16,7 +16,7 @@ class Welcome(Cog):
     @Cog.listener()
     async def on_member_join(self, member):
         db.execute("INSERT INTO exp (UserID) VALUES (?)", member.id)
-        await self.bot.get_channel(740705433844449351).send(f"Welcome to **{member.guild.name}** {member.mention}!")
+        await self.bot.get_channel(740705433844449351).send(f"Welcome to **{member.guild.name}** {member.mention}! Head over to <#819261643699388457> to pick your roles!")
         await member.add_roles(*(member.guild.get_role(id_) for id_ in (451100541511008276)))
     
     @Cog.listener()

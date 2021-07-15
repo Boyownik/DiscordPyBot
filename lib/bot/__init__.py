@@ -69,7 +69,7 @@ class Bot(BotBase):
             if not self.guild.get_member(id_):
                 to_remove.append(id_)
 
-        db.multiexec("DELETE FROM exp WHERE UserID = ?", ((id_ for id_ in to_remove)))
+        db.multiexec("DELETE FROM exp WHERE UserID = ?", ((id_,) for id_ in to_remove))
         db.commit()
         print('Database updated!')
 

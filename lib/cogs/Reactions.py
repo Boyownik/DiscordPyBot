@@ -54,7 +54,7 @@ class Reactions(Cog):
                                   args=[message.channel.id, message.id])
 
 
-    async def complete_poll(self, ctx, channel_id, message_id):
+    async def complete_poll(self, channel_id, message_id):
         message = await self.bot.get_channel(channel_id).fetch_message(message_id)
 
         most_voted = max(message.reactions, key=lambda r: r.count)

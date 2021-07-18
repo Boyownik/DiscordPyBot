@@ -28,7 +28,7 @@ class Reactions(Cog):
 
 
     @command(name="createpoll", aliases=["mkpoll"])
-    @has_permissions(message_guild=True)
+    @has_permissions(manage_guild=True)
     async def create_poll(self, ctx, hours: int, question: str, *options):
         if len(options) > 10:
             await ctx.send("You can only supply 10 options!")

@@ -50,7 +50,7 @@ class Reactions(Cog):
 
         self.polls.append((message.channel.id, message.id))
 
-        self.bot.schedule.add_jon(self.complete_poll, "date", run_date=datetime.now() + timedelta(seconds=hours),
+        self.bot.scheduler.add_jon(self.complete_poll, "date", run_date=datetime.now() + timedelta(seconds=hours),
                                   args=[message.channel.id, message.id])
 
 

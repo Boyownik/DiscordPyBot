@@ -59,7 +59,7 @@ class Reactions(Cog):
 
         most_voted = max(message.reactions, key=lambda r: r.count)
 
-        if most_voted == 0:
+        if most_voted.count-1 == 0:
             await message.channel.send("There was no votes!")
         else:
             await message.channel.send(f"The results are in and option {most_voted.emoji} was the most popular with {most_voted.count-1:,} votes!")

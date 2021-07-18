@@ -38,7 +38,7 @@ class Reactions(Cog):
                       timestamp=datetime.utcnow())
 
         fields = [("Options", "\n".join([f"{numbers[idx]} {options[idx]}" for idx, option in enumerate(options)]), False),
-                  ("Insctructions", "React to case and vote!")]
+                  ("Insctructions", "React to case and vote!", False)]
 
         for name, value, inline in fields:
             embed.add_field(name=name, value=value, inline=inline)

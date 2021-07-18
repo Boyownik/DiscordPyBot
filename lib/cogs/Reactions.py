@@ -29,7 +29,7 @@ class Reactions(Cog):
 
     @command(name="createpoll", aliases=["mkpoll"])
     @has_permissions(manage_guild=True)
-    async def create_poll(self, ctx, hours: int, question: str, *options):
+    async def create_poll(self, ctx, seconds: int, question: str, *options):
         if len(options) > 10:
             await ctx.send("You can only supply 10 options!")
         embed = Embed(title="Poll",
@@ -50,7 +50,7 @@ class Reactions(Cog):
 
         self.polls.append((message.channel.id, message.id))
 
-        self.bot.scheduler.add_job(self.complete_poll, "date", run_date=datetime.now() + timedelta(seconds=hours),
+        self.bot.scheduler.add_job(self.complete_poll, "date", run_date=datetime.now() + timedelta(seconds=seconds),
                                   args=[message.channel.id, message.id])
 
 
@@ -59,7 +59,7 @@ class Reactions(Cog):
 
         most_voted = max(message.reactions, key=lambda r: r.count)
 
-        if most_voted == 1:
+        if most_voted == 0:
             await message.channel.send("There was no votes!")
         else:
             await message.channel.send(f"The results are in and option {most_voted.emoji} was the most popular with {most_voted.count-1:,} votes!")
